@@ -2,7 +2,7 @@ library(tm)
 library(wordcloud)
 library(qdap)
 
-review <- read.csv("~/Downloads/Womens Clothing E-Commerce Reviews.csv", stringsAsFactors=F)
+review <- read.csv("https://raw.githubusercontent.com/ProfNascimento/MP/main/Womens%20Clothing%20E-Commerce%20Reviews.csv", stringsAsFactors=F)
 colnames(review)
 
 #Step1 : Creating a Corpus
@@ -102,9 +102,6 @@ list.vis[["MDS"]] = cmdscale(data.dist)    #stats
 
 list.vis[["ForceScheme"]] = forceScheme(data.dist)
 
-#list.vis[["LSP"]] = lsp(review_m)
-#list.vis[["PLMP"]] = plmp(review_m)
-
 list.vis[["LAMP"]] = lamp(review_m)
 
 list.vis[["tSNE"]] = tSNE(review_m)
@@ -120,24 +117,5 @@ for(i in 1:length(list.vis))
        bg = c("darkred","steel blue"), col = c("darkred","steel blue"),  pch = 21, 
        xlab = "", ylab = "", xaxt = "n", yaxt = "n")
 
-
-
 legend("left",legend=c("Negative","Positive"),col=c("darkred","steel blue"),pch=19)
 par(current.op)
-
-###############################
-current.op = par(no.readonly = TRUE)
-par(mfrow = c(2, 3), oma = c(0, 0, 0, 0), mar = c(0.5, 0.5, 2.0, 0.5))
-labels = as.factor(review$Class.Name)
-
-library(RColorBrewer)
-mypalette<-brewer.pal(11,"Paired")
-
-for(i in 1:length(list.vis))
-  plot(list.vis[[i]], main = names(list.vis[i]), 
-       bg = mypalette, col = mypalette,  pch = 21, 
-       xlab = "", ylab = "", xaxt = "n", yaxt = "n")
-
-legend("left",legend=levels(labels),col=mypalette,pch=19)
-
-###############################
