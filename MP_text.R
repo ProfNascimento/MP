@@ -36,6 +36,9 @@ fviz_pca_ind(res.pca,
              repel = TRUE     # Avoid text overlapping
 )+theme(text = element_text(size = 15))
 
+review$Review.Text[8551]
+review$Review.Text[12374]
+
 ###############################################################
 require(mp)
 require(umap)
