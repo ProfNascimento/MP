@@ -62,8 +62,7 @@ list.vis[["UMAP"]] = umap(review_jackets)$layout
 
 ## PLOTTING MPs
 par(mfrow = c(2, 3), oma = c(0, 0, 0, 0), mar = c(0.5, 0.5, 2.0, 0.5))
-labels = as.factor(review$Recommended.IND[review$Class.Name=="Jackets"])
-levels(labels)=c("darkred","steel blue")
+labels = ifelse(review$Recommended.IND[review$Class.Name=="Jackets"]==1,"steel blue","darkred")
 
 for(i in 1:length(list.vis)){
   plot(list.vis[[i]], main = names(list.vis[i]), 
